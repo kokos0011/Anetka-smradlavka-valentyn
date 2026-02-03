@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<title>❤️ Anetka smrdí (valentýn) ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    width: 350px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+img {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+h1 {
+    color: #e63946;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+button {
+    font-size: 18px;
+    padding: 12px 20px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+}
+
+#yes {
+    background: #38b000;
+    color: white;
+    font-size: 18px;
+}
+
+#no {
+    background: #e63946;
+    color: white;
+}
+
+.hidden {
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <img id="photo" src="foto1.jpg">
+
+    <h1 id="text">Budeš semnou na Valentýna kozičko? ❤️</h1>
+
+    <div class="buttons">
+        <button id="yes" onclick="yesClick()">ANO</button>
+        <button id="no" onclick="noClick()">NE</button>
+    </div>
+</div>
+
+<script>
+let noClicks = 0;
+
+const texts = [
+    "takže ne? maybe cheater 🥺",
+    "Zkus to ještě jednou a zbiju te",
+    "No tak pipino",
+    "Už nemáš na výběr 😏",
+    "ANO je jediná možnost mrk mkrk❤️",
+];
+
+function noClick() {
+    noClicks++;
+
+    document.getElementById("text").innerText =
+        texts[Math.min(noClicks, texts.length - 1)];
+
+    let yesBtn = document.getElementById("yes");
+    let size = 18 + noClicks * 10;
+    yesBtn.style.fontSize = size + "px";
+    yesBtn.style.padding = (12 + noClicks * 5) + "px";
+
+    if (noClicks >= 4) {
+        document.getElementById("no").style.display = "none";
+    }
+}
+
+function yesClick() {
+    document.getElementById("photo").src = "foto2.jpg";
+    document.getElementById("text").innerText =
+        "Věděl jsem to ❤️ Miluju tě lasko!"; 
+    document.querySelector(".buttons").classList.add("hidden");
+}
+</script>
+
+</body>
+</html>
